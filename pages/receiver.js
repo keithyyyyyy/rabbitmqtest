@@ -10,7 +10,7 @@ const amqp = require('amqplib/callback_api');
                 throw channelError;
             }
             // else, step 3: assert queue (check if the queue is present in rabbitmq, else create the queue)
-            const queue = 'queue1';
+            const queue = 'jobs';
             channel.assertQueue(queue);
             // step 4: receive message
             channel.consume(queue, (msg) => {
