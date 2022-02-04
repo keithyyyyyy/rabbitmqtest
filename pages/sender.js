@@ -50,7 +50,8 @@ async function connect(){
         
         //second parameter specifies the queue to send to
         //publish(<exchange>, <message>)
-        channel.publish('conjunctivitis', 'yourEyeGotProblem', Buffer.from('hello world'));
+        // channel.publish('conjunctivitis', 'yourEyeGotProblem', Buffer.from(msg));
+        channel.publish('conjunctivitis', 'yourEyeGotProblem', Buffer.from(JSON.stringify(msg)));
         
 
         console.log("----------------------------")
