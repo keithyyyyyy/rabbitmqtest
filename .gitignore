@@ -1,1 +1,16 @@
+.idea/
 node_modules/
+build/
+tmp/
+temp/
+.env*
+!*.env.example
+!*.env.user.example
+dist/
+
+.DS_Store
+
+ormconfig.json
+
+# Serverless directories
+.serverless/
