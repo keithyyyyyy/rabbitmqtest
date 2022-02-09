@@ -2,6 +2,7 @@ const amqp = require("amqplib");
 const express = require("express");
 const app = express();
 const { type } = require("express/lib/response");
+const amqpUrl = 'amqp://localhost';
 
 // API URL
 app.get("/api/exchange/:name", (req, res) => {
@@ -15,17 +16,17 @@ app.listen(port, () => console.log(`Listening to port ${port}`));
 
 async function createExchange(name) {
   try {
-    const connection = amqp.connect("amqp://localhost");
+    const connection = amqp.connect(amqpUrl);
     const channel = await (await connection).createChannel();
 
     const exchange = await channel.assertExchange(name, "direct", {
       durable: true,
     });
 
-    setTimeout(() => {
-      connection.cancel();
-      process.exit(0);
-    }, 20);
+    // setTimeout(() => {
+    //   connection.cancel();
+    //   process.exit(0);
+    // }, 20);
     // find out how to set response for runtime error
   } catch (ex) {
     console.log(ex);
